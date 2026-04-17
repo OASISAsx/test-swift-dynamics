@@ -1,0 +1,49 @@
+{
+  "common": {
+    "language": "Language",
+    "english": "English",
+    "thai": "Thai",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "search": "Search",
+    "confirm": "Confirm",
+    "deleteSelected": "Delete Selected"
+  },
+  "nav": {
+    "appTitle": "Next.js App",
+    "home": "Home",
+    "shapes": "Shapes",
+    "persons": "Persons"
+  },
+  "shapes": {
+    "moveShape": "Move Shape",
+    "moveLeft": "Move Left",
+    "moveRight": "Move Right",
+    "movePosition": "Move Position",
+    "circle": "Circle",
+    "square": "Square",
+    "triangle": "Triangle",
+    "rectangle": "Rectangle",
+    "oval": "Oval",
+    "pentagon": "Pentagon",
+    "hexagon": "Hexagon"
+  },
+  "person": {
+    "title": "Person Management",
+    "addPerson": "Add Person",
+    "editPerson": "Edit Person",
+    "deletePerson": "Delete Person",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "name": "Name",
+    "contact": "Contact",
+    "deleteConfirm": "Are you sure you want to delete this person?",
+    "deletePersons": "Deleted persons successfully"
+  }
+}

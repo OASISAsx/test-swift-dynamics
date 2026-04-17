@@ -1,0 +1,49 @@
+{
+  "common": {
+    "language": "ภาษา",
+    "english": "อังกฤษ",
+    "thai": "ไทย",
+    "save": "บันทึก",
+    "cancel": "ยกเลิก",
+    "delete": "ลบ",
+    "edit": "แก้ไข",
+    "add": "เพิ่ม",
+    "search": "ค้นหา",
+    "confirm": "ยืนยัน",
+    "deleteSelected": "ลบที่เลือก"
+  },
+  "nav": {
+    "appTitle": "แอป Next.js",
+    "home": "หน้าหลัก",
+    "shapes": "รูปทรง",
+    "persons": "จัดการข้อมูล"
+  },
+  "shapes": {
+    "moveShape": "เลื่อนรูปทรง",
+    "moveLeft": "เลื่อนไปซ้าย",
+    "moveRight": "เลื่อนไปขวา",
+    "movePosition": "เปลี่ยนตำแหน่ง",
+    "circle": "วงกลม",
+    "square": "สี่เหลี่ยมจัตุรัส",
+    "triangle": "สามเหลี่ยม",
+    "rectangle": "สี่เหลี่ยมผืนผ้า",
+    "oval": "วงรี",
+    "pentagon": "ห้าเหลี่ยม",
+    "hexagon": "หกเหลี่ยม"
+  },
+  "person": {
+    "title": "จัดการข้อมูลบุคคล",
+    "addPerson": "เพิ่มบุคคล",
+    "editPerson": "แก้ไขข้อมูลบุคคล",
+    "deletePerson": "ลบบุคคล",
+    "firstName": "ชื่อ",
+    "lastName": "นามสกุล",
+    "email": "อีเมล",
+    "phone": "โทรศัพท์",
+    "address": "ที่อยู่",
+    "name": "ชื่อ-นามสกุล",
+    "contact": "ติดต่อ",
+    "deleteConfirm": "คุณแน่ใจหรือไม่ว่าต้องการลบบุคคลนี้?",
+    "deletePersons": "ลบบุคคลที่เลือกเรียบร้อยแล้ว"
+  }
+}
