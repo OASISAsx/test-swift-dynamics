@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
         - name: nextjs-app
-          image: oasisforsaken/test-swift-dynamics:v1
+          image: oasisforsaken/test-swift-dynamics:v2
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
