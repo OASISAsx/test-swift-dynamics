@@ -6,7 +6,7 @@ services:
     restart: always
     ports:
       # แมปพอร์ต 8100 (Service Port) เข้ากับ 3000 (Target/Container Port)
-      - "8100:3000"
+      - "8101:3000"
     environment:
       - NODE_ENV=production
     # กำหนดทรัพยากรให้ใกล้เคียงกับ K8s Limits
