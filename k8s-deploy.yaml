@@ -29,7 +29,7 @@ spec:
       containers:
         - name: nextjs-app
           # อย่าลืมเปลี่ยนชื่อ image ให้ตรงกับที่คุณ Push ขึ้น Registry นะครับ
-          image: <your-docker-registry>/test-swift-dynamics:latest
+         image: myuser/test-swift-dynamics:v1
           ports:
             - containerPort: 3000
           resources:
