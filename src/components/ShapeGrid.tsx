@@ -19,7 +19,7 @@ const ShapeGrid: React.FC<ShapeGridProps> = ({
   order,
   isMounted,
   moveShape,
-  cycleCount, // Added prop to cycle shapes
+  cycleCount,
 }) => {
   const { t } = useTranslation();
   const [shuffledKeys, setShuffledKeys] = useState<string[] | null>(null);
@@ -72,19 +72,18 @@ const ShapeGrid: React.FC<ShapeGridProps> = ({
     }
   }
 
-  const normalizedCycleCount =
-    ((cycleCount % shapes.length) + shapes.length) % shapes.length;
+  const cycleDistance = Math.abs(cycleCount) % shapes.length;
 
-  if (normalizedCycleCount > 0) {
-    if (cycleCount >= 0) {
+  if (cycleDistance > 0) {
+    if (cycleCount > 0) {
       shapes = [
-        ...shapes.slice(normalizedCycleCount),
-        ...shapes.slice(0, normalizedCycleCount),
+        ...shapes.slice(shapes.length - cycleDistance),
+        ...shapes.slice(0, shapes.length - cycleDistance),
       ];
     } else {
       shapes = [
-        ...shapes.slice(shapes.length - normalizedCycleCount),
-        ...shapes.slice(0, shapes.length - normalizedCycleCount),
+        ...shapes.slice(cycleDistance),
+        ...shapes.slice(0, cycleDistance),
       ];
     }
   }

@@ -7,8 +7,8 @@ spec:
     app: test-swift-dynamics
   ports:
     - protocol: TCP
-      port: 8100
-      targetPort: 3000
+      port: 8101 # พอร์ตที่ Ingress เรียก
+      targetPort: 3000 # พอร์ตที่แอป Next.js รันอยู่จริงใน Container
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -16,6 +16,8 @@ metadata:
   name: test-swift-dynamics-deployment
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: test-swift-dynamics
@@ -26,7 +28,8 @@ spec:
     spec:
       containers:
         - name: nextjs-app
-          image: oasisforsaken/test-swift-dynamics:v1
+          image: oasisforsaken/test-swift-dynamics:v2
+          imagePullPolicy: Always
           ports:
             - containerPort: 3000
           resources:
@@ -43,13 +46,13 @@ metadata:
   name: test-swift-dynamics-ingress
   annotations:
     kubernetes.io/ingress.class: "nginx"
-    # เพิ่มบรรทัดนี้เพื่อบอกให้ Cert-Manager ทำงาน
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
   tls:
     - hosts:
         - test-swift-dynamics.elitefund.fun
-      secretName: test-swift-dynamics-tls-prod # ชื่อ Secret ใหม่สำหรับใบเซอร์จริง
+      secretName: test-swift-dynamics-tls-prod
   rules:
     - host: test-swift-dynamics.elitefund.fun
       http:
@@ -60,4 +63,4 @@ spec:
               service:
                 name: test-swift-dynamics-service
                 port:
-                  number: 8100
+                  number: 8101 # ต้องตรงกับ port ใน Service ด้านบน
