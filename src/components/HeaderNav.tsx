@@ -53,7 +53,10 @@ const HeaderNav: React.FC = () => {
       }}
     >
       <div>
-        <Button onClick={() => router.push(`/${locale}`)}>Home</Button>
+        <Button onClick={() => router.push(`/${locale}`)}>
+          {" "}
+          {t("nav.home")}
+        </Button>
       </div>
       {/* <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
         <h1 style={{ margin: 0, fontSize: '20px', color: '#333' }}>

@@ -1,17 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-export interface Person {
-  id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  address: string;
-}
-
-export interface PersonsState {
-  persons: Person[];
-}
+import { Person, PersonsState } from "../../types/person.type";
 
 const loadPersonsFromLocalStorage = (): Person[] => {
   if (typeof window === "undefined") return [];
@@ -70,7 +58,7 @@ export const personsSlice = createSlice({
     loadPersons: (state) => {
       const data = loadPersonsFromLocalStorage();
 
-      state.persons = Array.isArray(data) ? data.reverse() : [];
+      state.persons = data;
     },
   },
 });

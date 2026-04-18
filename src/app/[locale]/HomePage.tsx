@@ -4,7 +4,7 @@ import React from "react";
 import { Layout, Typography, Card, Row, Col } from "antd";
 import { AppstoreOutlined, TeamOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 import HeaderNav from "@/components/HeaderNav";
 
 const { Content } = Layout;
@@ -12,7 +12,6 @@ const { Content } = Layout;
 export default function HomePage() {
   const { t, i18n } = useTranslation();
   const router = useRouter();
-  const pathname = usePathname();
 
   const navigateTo = (path: string) => {
     router.push(`/${i18n.language}${path}`);
@@ -36,8 +35,24 @@ export default function HomePage() {
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <HeaderNav />
-      <Content>
-        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "24px" }}>
+      <Content
+        style={{
+          minHeight: "calc(100vh - 64px)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "24px",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1200px",
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
+        >
           <Typography.Title
             level={2}
             style={{ textAlign: "center", marginBottom: "32px" }}

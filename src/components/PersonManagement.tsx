@@ -11,14 +11,11 @@ import {
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "@/store";
-import {
-  deletePerson,
-  deleteMultiplePersons,
-  Person,
-} from "@/store/personsSlice";
+import { deletePerson, deleteMultiplePersons } from "@/store/personsSlice";
 import { openAddModal, openEditModal } from "@/store/personFormSlice";
 import PersonFormModal from "./PersonFormModal";
 import type { ColumnsType } from "antd/es/table";
+import { Person } from "../../types/person.type";
 
 const PersonManagement: React.FC = () => {
   const { t } = useTranslation();
@@ -59,28 +56,19 @@ const PersonManagement: React.FC = () => {
     setSearchText(value.toLowerCase());
   };
 
-  // const handleTableChange = (pagination: any, filters: any, sorter: any) => {
-  //   if (sorter.field) {
-  //     setSortInfo({
-  //       field: sorter.field,
-  //       order: sorter.order,
-  //     });
-  //   }
-  // };
-
   const getFilteredAndSortedPersons = () => {
     let filtered = persons.filter(
       (p) =>
         p.firstName.toLowerCase().includes(searchText) ||
         p.lastName.toLowerCase().includes(searchText) ||
-        p.email.toLowerCase().includes(searchText) ||
+        p.nationality.toLowerCase().includes(searchText) ||
         p.phone.includes(searchText),
     );
 
     if (sortInfo) {
       filtered.sort((a, b) => {
-        const aValue = a[sortInfo.field as keyof Person];
-        const bValue = b[sortInfo.field as keyof Person];
+        const aValue = a[sortInfo.field as keyof Person] as string;
+        const bValue = b[sortInfo.field as keyof Person] as string;
         if (aValue < bValue) return sortInfo.order === "ascend" ? -1 : 1;
         if (aValue > bValue) return sortInfo.order === "ascend" ? 1 : -1;
         return 0;
@@ -118,10 +106,18 @@ const PersonManagement: React.FC = () => {
       sorter: true,
     },
     {
-      title: t("person.email"),
-      dataIndex: "email",
-      key: "email",
+      title: t("person.nationality"),
+      dataIndex: "nationality",
+      key: "nationality",
       sorter: true,
+
+      render: (text) => {
+        if (text === "Thai") return t("person.thai");
+        if (text === "American") return t("person.american");
+        if (text === "British") return t("person.british");
+        if (text === "Japanese") return t("person.japanese");
+        return text;
+      },
     },
     {
       title: t("person.phone"),
@@ -203,23 +199,12 @@ const PersonManagement: React.FC = () => {
         columns={columns}
         pagination={{
           pageSize: pageSize,
-          showSizeChanger: true, // This enables the dropdown
+          showSizeChanger: true,
           pageSizeOptions: ["5", "10", "20", "50", "100"],
           onShowSizeChange: (current, size) => setPageSize(size),
         }}
       />
-      {/* <Select
-        value={pageSize}
-        style={{ width: 120 }}
-        onChange={(value) => setPageSize(value)}
-        options={[
-          { value: 5, label: "5" },
-          { value: 10, label: "10" },
-          { value: 20, label: "20" },
-          { value: 50, label: "50" },
-          { value: 100, label: "100" },
-        ]}
-      /> */}
+
       <PersonFormModal />
     </div>
   );

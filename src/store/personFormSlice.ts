@@ -1,18 +1,25 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Person } from './personsSlice';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Person } from "../../types/person.type";
 
 export interface PersonFormState {
-  formData: Omit<Person, 'id'>;
+  formData: Omit<Person, "id">;
   editingId: string | null;
   isModalOpen: boolean;
 }
 
-const getInitialFormData = (): Omit<Person, 'id'> => ({
-  firstName: '',
-  lastName: '',
-  email: '',
-  phone: '',
-  address: '',
+const getInitialFormData = (): Omit<Person, "id"> => ({
+  prefix: "",
+  firstName: "",
+  lastName: "",
+  birthday: "",
+  phone: "",
+  phoneCode: "",
+  address: "",
+  citizenId: "",
+  gender: "",
+  passportNumber: "",
+  nationality: "",
+  expectedSalary: null,
 });
 
 const initialState: PersonFormState = {
@@ -22,7 +29,7 @@ const initialState: PersonFormState = {
 };
 
 export const personFormSlice = createSlice({
-  name: 'personForm',
+  name: "personForm",
   initialState,
   reducers: {
     openAddModal: (state) => {
@@ -41,11 +48,15 @@ export const personFormSlice = createSlice({
       state.formData = getInitialFormData();
       state.editingId = null;
     },
-    updateFormData: (state, action: PayloadAction<Partial<Omit<Person, 'id'>>>) => {
+    updateFormData: (
+      state,
+      action: PayloadAction<Partial<Omit<Person, "id">>>,
+    ) => {
       state.formData = { ...state.formData, ...action.payload };
     },
   },
 });
 
-export const { openAddModal, openEditModal, closeModal, updateFormData } = personFormSlice.actions;
+export const { openAddModal, openEditModal, closeModal, updateFormData } =
+  personFormSlice.actions;
 export default personFormSlice.reducer;

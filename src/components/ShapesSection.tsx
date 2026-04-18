@@ -21,11 +21,11 @@ const ShapesSection: React.FC = () => {
   }, []);
 
   const handleMoveShapeLeft = () => {
-    setCycleCount((prev) => prev - 1);
+    setCycleCount((prev) => prev + 1);
   };
 
   const handleMoveShapeRight = () => {
-    setCycleCount((prev) => prev + 1);
+    setCycleCount((prev) => prev - 1);
   };
 
   const handleMovePosition = () => {
