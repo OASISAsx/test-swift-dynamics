@@ -15,7 +15,7 @@ import { deletePerson, deleteMultiplePersons } from "@/store/personsSlice";
 import { openAddModal, openEditModal } from "@/store/personFormSlice";
 import PersonFormModal from "./PersonFormModal";
 import type { ColumnsType } from "antd/es/table";
-import { Person } from "../../types/person.type";
+import { Person } from "../types/person.type";
 
 const PersonManagement: React.FC = () => {
   const { t } = useTranslation();

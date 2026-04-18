@@ -1,0 +1,67 @@
+# 1. Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-swift-dynamics-service # เปลี่ยนชื่อให้สื่อสารชัดเจน
+spec:
+  selector:
+    app: test-swift-dynamics
+  ports:
+    - protocol: TCP
+      port: 8100
+      targetPort: 3000
+---
+# 2. Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-swift-dynamics-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: test-swift-dynamics
+  template:
+    metadata:
+      labels:
+        app: test-swift-dynamics
+    spec:
+      containers:
+        - name: nextjs-app
+          # อย่าลืมเปลี่ยนชื่อ image ให้ตรงกับที่คุณ Push ขึ้น Registry นะครับ
+          image: <your-docker-registry>/test-swift-dynamics:latest
+          ports:
+            - containerPort: 3000
+          resources:
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+            requests:
+              cpu: "250m"
+              memory: "256Mi"
+---
+# 3. Ingress
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: test-swift-dynamics-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - test-swift-dynamics.elitefund.fun
+      secretName: test-swift-dynamics-tls-new
+  rules:
+    - host: test-swift-dynamics.elitefund.fun
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: test-swift-dynamics-service # ตรวจสอบให้ชื่อตรงกับ Metadata ของ Service ด้านบน
+                port:
+                  number: 8100

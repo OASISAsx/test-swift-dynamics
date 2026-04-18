@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Person, PersonsState } from "../../types/person.type";
+import { Person, PersonsState } from "../types/person.type";
 
 const loadPersonsFromLocalStorage = (): Person[] => {
   if (typeof window === "undefined") return [];

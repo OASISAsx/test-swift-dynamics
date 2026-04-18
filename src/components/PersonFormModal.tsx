@@ -21,7 +21,7 @@ import { RootState, AppDispatch } from "@/store";
 import { closeModal } from "@/store/personFormSlice";
 import { addPerson, updatePerson } from "@/store/personsSlice";
 import { v4 as uuidv4 } from "uuid";
-import { Person } from "../../types/person.type";
+import { Person } from "../types/person.type";
 import dayjs from "dayjs";
 import {
   getCountryOptions,

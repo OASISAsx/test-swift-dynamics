@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Person } from "../../types/person.type";
+import { Person } from "../types/person.type";
 
 export interface PersonFormState {
   formData: Omit<Person, "id">;
