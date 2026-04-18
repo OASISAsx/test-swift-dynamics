@@ -15,7 +15,7 @@ kind: Deployment
 metadata:
   name: test-swift-dynamics-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: test-swift-dynamics
