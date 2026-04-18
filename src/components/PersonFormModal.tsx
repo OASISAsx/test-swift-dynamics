@@ -210,7 +210,7 @@ const PersonFormModal: React.FC = () => {
           <Col xs={24} lg={14}>
             <Form.Item
               name="citizenId"
-              label="เลขบัตรประจำตัวประชาชน"
+              label={t("person.citizenId")}
               rules={[
                 { required: true, message: t("validate.citizenId") },
                 { len: 13, message: t("validate.citizenIdLength") },
@@ -239,8 +239,8 @@ const PersonFormModal: React.FC = () => {
           <Col xs={24} lg={10} style={{ paddingLeft: "100px" }}>
             <Form.Item
               name="gender"
-              label="เพศ"
-              rules={[{ required: true, message: "กรุณาเลือกเพศ" }]}
+              label={t("person.gender")}
+              rules={[{ required: true, message: t("validate.gender") }]}
             >
               <Radio.Group
                 options={getGenderOptions(t)}
