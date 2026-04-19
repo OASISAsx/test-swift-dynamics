@@ -84,6 +84,7 @@
     "citizenId": "Citizen ID is required",
     "gender": "Gender is required",
     "resetFields": "Reset",
+    "phoneLength": "Phone number must be 10 digits",
     "passportNumber": "Passport number is required",
     "passportPattern": "Please enter a valid passport number",
     "passportLength": "Passport number must be 9 characters long",
