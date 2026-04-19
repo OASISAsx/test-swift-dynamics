@@ -194,9 +194,13 @@ const PersonFormModal: React.FC = () => {
                 <Form.Item
                   name="phone"
                   noStyle
-                  rules={[{ required: true, message: t("validate.phone") }]}
+                  rules={[
+                    { required: true, message: t("validate.phone") },
+                    { len: 10, message: t("validate.phoneLength") },
+                  ]}
                 >
                   <Input
+                    maxLength={10}
                     placeholder={t("validate.addphone")}
                     style={{ width: "100%" }}
                   />
